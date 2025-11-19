@@ -25,16 +25,16 @@ const pedidoRoutes = require('./routes/pedidoRoutes');
 const itemPedidoRoutes = require('./routes/itemPedidoRoutes');
 const pagamentoRoutes = require('./routes/pagamentoRoutes');
 
-app.use('/api/categorias', categoriaRotas);
-app.use('/api/enderecos', enderecoRotas);
-app.use('/api/estoques', estoqueRotas);
-app.use('/api/produtos', produtoRotas);
-app.use('/api/usuarios', usuarioRotas);
-app.use('/api/vendedores', vendedorRotas);
-app.use('/api/funcionarios', funcionarioRoutes);
-app.use('/api/pedidos', pedidoRoutes);
-app.use('/api/itens-pedido', itemPedidoRoutes);
-app.use('/api/pagamentos', pagamentoRoutes);
+app.use('/categorias', categoriaRotas);
+app.use('/enderecos', enderecoRotas);
+app.use('/estoques', estoqueRotas);
+app.use('/produtos', produtoRotas);
+app.use('/usuarios', usuarioRotas);
+app.use('/vendedores', vendedorRotas);
+app.use('/funcionarios', funcionarioRoutes);
+app.use('/pedidos', pedidoRoutes);
+app.use('/itens-pedido', itemPedidoRoutes);
+app.use('/pagamentos', pagamentoRoutes);
 
 app.get('/', (req, res) => {
   res.send('API is running!');

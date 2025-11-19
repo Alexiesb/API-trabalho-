@@ -1,0 +1,342 @@
+{
+    "info": {
+      "_postman_id": "5b47b1c1-332a-4fb8-9978-000000000001",
+      "name": "API Loja - CRUD",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Produtos",
+        "item": [
+          {
+            "name": "Criar Produto (POST)",
+            "request": {
+              "method": "POST",
+              "header": [],
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"nome\": \"Notebook Dell\",\n  \"preco\": 3500,\n  \"categoria\": \"CAT_ID\",\n  \"fornecedor\": \"FORN_ID\"\n}"
+              },
+              "url": {
+                "raw": "http://localhost:3000/produtos",
+                "host": ["localhost"],
+                "port": "3000",
+                "path": ["produtos"]
+              }
+            }
+          },
+          {
+            "name": "Listar Produtos (GET)",
+            "request": {
+              "method": "GET",
+              "url": "http://localhost:3000/produtos"
+            }
+          },
+          {
+            "name": "Atualizar Produto (PUT)",
+            "request": {
+              "method": "PUT",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"nome\": \"Notebook Dell Inspiron\"\n}"
+              },
+              "url": "http://localhost:3000/produtos/ID"
+            }
+          },
+          {
+            "name": "Excluir Produto (DELETE)",
+            "request": {
+              "method": "DELETE",
+              "url": "http://localhost:3000/produtos/ID"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Categorias",
+        "item": [
+          {
+            "name": "Criar Categoria (POST)",
+            "request": {
+              "method": "POST",
+              "body": { "mode": "raw", "raw": "{\n  \"nome\": \"Eletrônicos\"\n}" },
+              "url": "http://localhost:3000/categorias"
+            }
+          },
+          {
+            "name": "Listar Categorias (GET)",
+            "request": { "method": "GET", "url": "http://localhost:3000/categorias" }
+          },
+          {
+            "name": "Atualizar Categoria (PUT)",
+            "request": {
+              "method": "PUT",
+              "body": { "mode": "raw", "raw": "{\n  \"nome\": \"Informática\"\n}" },
+              "url": "http://localhost:3000/categorias/ID"
+            }
+          },
+          {
+            "name": "Excluir Categoria (DELETE)",
+            "request": { "method": "DELETE", "url": "http://localhost:3000/categorias/ID" }
+          }
+        ]
+      },
+      {
+        "name": "Fornecedores",
+        "item": [
+          {
+            "name": "Criar Fornecedor (POST)",
+            "request": {
+              "method": "POST",
+              "body": { "mode": "raw", "raw": "{\n  \"nome\": \"Tech Distribuidora\"\n}" },
+              "url": "http://localhost:3000/fornecedores"
+            }
+          },
+          {
+            "name": "Listar Fornecedores (GET)",
+            "request": { "method": "GET", "url": "http://localhost:3000/fornecedores" }
+          },
+          {
+            "name": "Atualizar Fornecedor (PUT)",
+            "request": {
+              "method": "PUT",
+              "body": { "mode": "raw", "raw": "{\n  \"nome\": \"TechMax Distribuidora\"\n}" },
+              "url": "http://localhost:3000/fornecedores/ID"
+            }
+          },
+          {
+            "name": "Excluir Fornecedor (DELETE)",
+            "request": { "method": "DELETE", "url": "http://localhost:3000/fornecedores/ID" }
+          }
+        ]
+      },
+      {
+        "name": "Clientes",
+        "item": [
+          {
+            "name": "Criar Cliente (POST)",
+            "request": {
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"nome\": \"Alexandre Souza\",\n  \"email\": \"alexandre@email.com\"\n}"
+              },
+              "url": "http://localhost:3000/clientes"
+            }
+          },
+          {
+            "name": "Listar Clientes (GET)",
+            "request": { "method": "GET", "url": "http://localhost:3000/clientes" }
+          },
+          {
+            "name": "Atualizar Cliente (PUT)",
+            "request": {
+              "method": "PUT",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"nome\": \"Alexandre S. Mendonça\"\n}"
+              },
+              "url": "http://localhost:3000/clientes/ID"
+            }
+          },
+          {
+            "name": "Excluir Cliente (DELETE)",
+            "request": { "method": "DELETE", "url": "http://localhost:3000/clientes/ID" }
+          }
+        ]
+      },
+      {
+        "name": "Funcionários",
+        "item": [
+          {
+            "name": "Criar Funcionário (POST)",
+            "request": {
+              "method": "POST",
+              "body": { "mode": "raw", "raw": "{\n  \"nome\": \"João Lima\"\n}" },
+              "url": "http://localhost:3000/funcionarios"
+            }
+          },
+          {
+            "name": "Listar Funcionários (GET)",
+            "request": { "method": "GET", "url": "http://localhost:3000/funcionarios" }
+          },
+          {
+            "name": "Atualizar Funcionário (PUT)",
+            "request": {
+              "method": "PUT",
+              "body": { "mode": "raw", "raw": "{\n  \"nome\": \"João da Silva\"\n}" },
+              "url": "http://localhost:3000/funcionarios/ID"
+            }
+          },
+          {
+            "name": "Excluir Funcionário (DELETE)",
+            "request": { "method": "DELETE", "url": "http://localhost:3000/funcionarios/ID" }
+          }
+        ]
+      },
+      {
+        "name": "Pedidos",
+        "item": [
+          {
+            "name": "Criar Pedido (POST)",
+            "request": {
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"cliente\": \"CLIENTE_ID\",\n  \"funcionario\": \"FUNC_ID\"\n}"
+              },
+              "url": "http://localhost:3000/pedidos"
+            }
+          },
+          {
+            "name": "Listar Pedidos (GET)",
+            "request": { "method": "GET", "url": "http://localhost:3000/pedidos" }
+          },
+          {
+            "name": "Atualizar Pedido (PUT)",
+            "request": {
+              "method": "PUT",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"status\": \"Finalizado\"\n}"
+              },
+              "url": "http://localhost:3000/pedidos/ID"
+            }
+          },
+          {
+            "name": "Excluir Pedido (DELETE)",
+            "request": { "method": "DELETE", "url": "http://localhost:3000/pedidos/ID" }
+          }
+        ]
+      },
+      {
+        "name": "Itens do Pedido",
+        "item": [
+          {
+            "name": "Criar Item (POST)",
+            "request": {
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"pedido\": \"PED_ID\",\n  \"produto\": \"PROD_ID\",\n  \"quantidade\": 2\n}"
+              },
+              "url": "http://localhost:3000/itens"
+            }
+          },
+          {
+            "name": "Listar Itens (GET)",
+            "request": { "method": "GET", "url": "http://localhost:3000/itens" }
+          },
+          {
+            "name": "Atualizar Item (PUT)",
+            "request": {
+              "method": "PUT",
+              "body": { "mode": "raw", "raw": "{\n  \"quantidade\": 5\n}" },
+              "url": "http://localhost:3000/itens/ID"
+            }
+          },
+          {
+            "name": "Excluir Item (DELETE)",
+            "request": { "method": "DELETE", "url": "http://localhost:3000/itens/ID" }
+          }
+        ]
+      },
+      {
+        "name": "Pagamentos",
+        "item": [
+          {
+            "name": "Criar Pagamento (POST)",
+            "request": {
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"pedido\": \"PED_ID\",\n  \"valor\": 3500,\n  \"forma\": \"Pix\"\n}"
+              },
+              "url": "http://localhost:3000/pagamentos"
+            }
+          },
+          {
+            "name": "Listar Pagamentos (GET)",
+            "request": { "method": "GET", "url": "http://localhost:3000/pagamentos" }
+          },
+          {
+            "name": "Atualizar Pagamento (PUT)",
+            "request": {
+              "method": "PUT",
+              "body": { "mode": "raw", "raw": "{\n  \"forma\": \"Cartão\"\n}" },
+              "url": "http://localhost:3000/pagamentos/ID"
+            }
+          },
+          {
+            "name": "Excluir Pagamento (DELETE)",
+            "request": { "method": "DELETE", "url": "http://localhost:3000/pagamentos/ID" }
+          }
+        ]
+      },
+      {
+        "name": "Endereços",
+        "item": [
+          {
+            "name": "Criar Endereço (POST)",
+            "request": {
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"cliente\": \"CLIENTE_ID\",\n  \"rua\": \"Rua 1\",\n  \"numero\": \"55\"\n}"
+              },
+              "url": "http://localhost:3000/enderecos"
+            }
+          },
+          {
+            "name": "Listar Endereços (GET)",
+            "request": { "method": "GET", "url": "http://localhost:3000/enderecos" }
+          },
+          {
+            "name": "Atualizar Endereço (PUT)",
+            "request": {
+              "method": "PUT",
+              "body": { "mode": "raw", "raw": "{\n  \"rua\": \"Rua Brasil\"\n}" },
+              "url": "http://localhost:3000/enderecos/ID"
+            }
+          },
+          {
+            "name": "Excluir Endereço (DELETE)",
+            "request": { "method": "DELETE", "url": "http://localhost:3000/enderecos/ID" }
+          }
+        ]
+      },
+      {
+        "name": "Estoque",
+        "item": [
+          {
+            "name": "Criar Registro (POST)",
+            "request": {
+              "method": "POST",
+              "body": {
+                "mode": "raw",
+                "raw": "{\n  \"produto\": \"PROD_ID\",\n  \"quantidade\": 20\n}"
+              },
+              "url": "http://localhost:3000/estoque"
+            }
+          },
+          {
+            "name": "Listar Estoque (GET)",
+            "request": { "method": "GET", "url": "http://localhost:3000/estoque" }
+          },
+          {
+            "name": "Atualizar Registro (PUT)",
+            "request": {
+              "method": "PUT",
+              "body": { "mode": "raw", "raw": "{\n  \"quantidade\": 50\n}" },
+              "url": "http://localhost:3000/estoque/ID"
+            }
+          },
+          {
+            "name": "Excluir Registro (DELETE)",
+            "request": { "method": "DELETE", "url": "http://localhost:3000/estoque/ID" }
+          }
+        ]
+      }
+    ]
+  }
+  

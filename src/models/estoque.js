@@ -7,7 +7,7 @@ const estoqueSchema = new mongoose.Schema({
     required: true,
   },
   vendedor: {
-    type: mongoose.schema.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     ref: 'Vendedor',
     required: true,
   },

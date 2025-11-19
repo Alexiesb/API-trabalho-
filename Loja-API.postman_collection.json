@@ -335,6 +335,7 @@
             "name": "Excluir Registro (DELETE)",
             "request": { "method": "DELETE", "url": "http://localhost:3000/estoque/ID" }
           }
+          
         ]
       }
     ]

@@ -19,6 +19,10 @@ const usuarioSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  vendedor: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Vendedor',
+  },
   createdAt: {
     type: Date,
     default: Date.now,

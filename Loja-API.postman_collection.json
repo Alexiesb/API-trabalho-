@@ -1,7 +1,8 @@
 {
     "info": {
         "_postman_id": "b7e5e34a-3c2b-4d1f-8a0a-9e1b2c3d4e5f",
-        "name": "API Loja Completa",
+        "name": "Loja Completa API - Documentação Completa",
+        "description": "Esta é a documentação completa da API para a Loja Completa. A coleção está organizada por recurso, com cada pasta contendo as operações CRUD (Create, Read, Update, Delete) para uma entidade específica do sistema.",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "variable": [
             { "key": "BASE_URL", "value": "http://localhost:3000" },
@@ -19,206 +20,303 @@
     },
     "item": [
         {
-            "name": "1. Usuarios",
+            "name": "Usuarios",
+            "description": "Endpoints para gerenciar os usuários (clientes) da loja.",
             "item": [
                 {
-                    "name": "Criar Usuario",
-                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"USUARIO_ID\", res._id);"], "type": "text/javascript"}}],
+                    "name": "POST Criar Usuario",
+                    "description": "Cria um novo usuário. O email e o CPF devem ser únicos. O ID do usuário criado é salvo na variável de coleção `USUARIO_ID`.",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"USUARIO_ID\", res.data._id);"], "type": "text/javascript"}}],
                     "request": {
                         "method": "POST",
                         "header": [{ "key": "Content-Type", "value": "application/json" }],
-                        "body": {"mode": "raw", "raw": "{\n  \"name\": \"Usuario de Teste\",\n  \"email\": \"usuario@teste.com\",\n  \"password\": \"senha123\",\n  \"cpf\": \"11122233344\"\n}"},
+                        "body": {"mode": "raw", "raw": "{\n  \"name\": \"Novo Usuário\",\n  \"email\": \"novo.usuario@example.com\",\n  \"password\": \"senha123\",\n  \"cpf\": \"12345678900\"\n}", "options": {"raw": {"language": "json"}}},
                         "url": "{{BASE_URL}}/usuarios"
                     }
                 },
+                {"name": "GET Listar Usuarios", "request": { "method": "GET", "url": "{{BASE_URL}}/usuarios" }, "description": "Lista todos os usuários."},
+                {"name": "GET Usuario por ID", "request": { "method": "GET", "url": "{{BASE_URL}}/usuarios/{{USUARIO_ID}}" }, "description": "Busca um usuário pelo ID."},
                 {
-                    "name": "Listar Usuarios",
-                    "request": { "method": "GET", "url": "{{BASE_URL}}/usuarios" }
-                },
-                {
-                    "name": "Atualizar Usuario",
+                    "name": "PUT Atualizar Usuario",
+                    "description": "Atualiza um usuário existente.",
                     "request": {
                         "method": "PUT",
                         "header": [{ "key": "Content-Type", "value": "application/json" }],
-                        "body": { "mode": "raw", "raw": "{\n  \"name\": \"Usuario de Teste Alterado\"\n}"},
+                        "body": {"mode": "raw", "raw": "{\n  \"name\": \"Usuário Atualizado\"\n}", "options": {"raw": {"language": "json"}}},
                         "url": "{{BASE_URL}}/usuarios/{{USUARIO_ID}}"
                     }
                 },
-                {
-                    "name": "Deletar Usuario",
-                    "request": { "method": "DELETE", "url": "{{BASE_URL}}/usuarios/{{USUARIO_ID}}" }
-                }
+                {"name": "DELETE Deletar Usuario", "request": { "method": "DELETE", "url": "{{BASE_URL}}/usuarios/{{USUARIO_ID}}" }, "description": "Deleta um usuário pelo ID."}
             ]
         },
         {
-            "name": "2. Vendedores",
+            "name": "Vendedores",
+            "description": "Endpoints para gerenciar os vendedores (lojas).",
             "item": [
-                 {
-                    "name": "Criar Vendedor",
-                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"VENDEDOR_ID\", res._id);"], "type": "text/javascript"}}],
+                {
+                    "name": "POST Criar Vendedor",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"VENDEDOR_ID\", res.data._id);"], "type": "text/javascript"}}],
                     "request": {
                         "method": "POST",
-                        "header": [{ "key": "Content-Type", "value": "application/json" }],
-                        "body": {"mode": "raw", "raw": "{\n  \"name\": \"Loja do Vendedor\",\n  \"email\": \"vendedor@loja.com\",\n  \"password\": \"senhaForte123\",\n  \"cnpj\": \"11222333000144\"\n}"},
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {"mode": "raw", "raw": "{\n    \"name\": \"Loja do Vendedor\",\n    \"email\": \"vendedor@example.com\",\n    \"password\": \"senha123\",\n    \"cnpj\": \"00112233000144\"\n}", "options": {"raw": {"language": "json"}}},
                         "url": "{{BASE_URL}}/vendedores"
-                    }
+                    },
+                    "description": "Cria um novo vendedor."
                 },
+                {"name": "GET Listar Vendedores", "request": { "method": "GET", "url": "{{BASE_URL}}/vendedores" }, "description": "Lista todos os vendedores."},
+                {"name": "GET Vendedor por ID", "request": { "method": "GET", "url": "{{BASE_URL}}/vendedores/{{VENDEDOR_ID}}" }, "description": "Busca um vendedor pelo ID."},
                 {
-                    "name": "Listar Vendedores",
-                    "request": { "method": "GET", "url": "{{BASE_URL}}/vendedores" }
-                }
+                    "name": "PUT Atualizar Vendedor",
+                    "request": {
+                        "method": "PUT",
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {"mode": "raw", "raw": "{\n    \"name\": \"Loja do Vendedor Atualizada\"\n}", "options": {"raw": {"language": "json"}}},
+                        "url": "{{BASE_URL}}/vendedores/{{VENDEDOR_ID}}"
+                    },
+                    "description": "Atualiza um vendedor existente."
+                },
+                {"name": "DELETE Deletar Vendedor", "request": { "method": "DELETE", "url": "{{BASE_URL}}/vendedores/{{VENDEDOR_ID}}" }, "description": "Deleta um vendedor pelo ID."}
             ]
         },
         {
-            "name": "3. Funcionarios",
+            "name": "Funcionarios",
+            "description": "Endpoints para gerenciar os funcionários.",
             "item": [
-                 {
-                    "name": "Criar Funcionario",
-                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"FUNCIONARIO_ID\", res._id);"], "type": "text/javascript"}}],
+                {
+                    "name": "POST Criar Funcionario",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"FUNCIONARIO_ID\", res.data._id);"], "type": "text/javascript"}}],
                     "request": {
                         "method": "POST",
-                        "header": [{ "key": "Content-Type", "value": "application/json" }],
-                        "body": {"mode": "raw", "raw": "{\n  \"name\": \"Funcionario Exemplo\",\n  \"email\": \"func@empresa.com\",\n  \"password\": \"senhaFunc\"\n}"},
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {"mode": "raw", "raw": "{\n    \"nome\": \"Funcionario Teste\",\n    \"cpf\": \"11122233344\",\n    \"email\": \"funcionario@empresa.com\",\n    \"cargo\": \"Analista\",\n    \"salario\": 4500\n}", "options": {"raw": {"language": "json"}}},
                         "url": "{{BASE_URL}}/funcionarios"
-                    }
+                    },
+                    "description": "Cria um novo funcionário."
                 },
+                {"name": "GET Listar Funcionarios", "request": { "method": "GET", "url": "{{BASE_URL}}/funcionarios" }, "description": "Lista todos os funcionários."},
+                {"name": "GET Funcionario por ID", "request": { "method": "GET", "url": "{{BASE_URL}}/funcionarios/{{FUNCIONARIO_ID}}" }, "description": "Busca um funcionário pelo ID."},
                 {
-                    "name": "Listar Funcionarios",
-                    "request": { "method": "GET", "url": "{{BASE_URL}}/funcionarios" }
-                }
+                    "name": "PUT Atualizar Funcionario",
+                    "request": {
+                        "method": "PUT",
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {"mode": "raw", "raw": "{\n    \"cargo\": \"Analista Sênior\",\n    \"salario\": 6000\n}", "options": {"raw": {"language": "json"}}},
+                        "url": "{{BASE_URL}}/funcionarios/{{FUNCIONARIO_ID}}"
+                    },
+                    "description": "Atualiza um funcionário existente."
+                },
+                {"name": "DELETE Deletar Funcionario", "request": { "method": "DELETE", "url": "{{BASE_URL}}/funcionarios/{{FUNCIONARIO_ID}}" }, "description": "Deleta um funcionário pelo ID."}
             ]
         },
         {
-            "name": "4. Categorias",
+            "name": "Categorias",
+            "description": "Endpoints para gerenciar as categorias de produtos.",
             "item": [
-                 {
-                    "name": "Criar Categoria",
-                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"CATEGORIA_ID\", res._id);"], "type": "text/javascript"}}],
+                {
+                    "name": "POST Criar Categoria",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"CATEGORIA_ID\", res.data._id);"], "type": "text/javascript"}}],
                     "request": {
                         "method": "POST",
-                        "header": [{ "key": "Content-Type", "value": "application/json" }],
-                        "body": { "mode": "raw", "raw": "{\n  \"name\": \"Eletronicos\"\n}"},
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {"mode": "raw", "raw": "{\n    \"name\": \"Eletrônicos\"\n}", "options": {"raw": {"language": "json"}}},
                         "url": "{{BASE_URL}}/categorias"
-                    }
+                    },
+                    "description": "Cria uma nova categoria."
                 },
+                {"name": "GET Listar Categorias", "request": { "method": "GET", "url": "{{BASE_URL}}/categorias" }, "description": "Lista todas as categorias."},
+                {"name": "GET Categoria por ID", "request": { "method": "GET", "url": "{{BASE_URL}}/categorias/{{CATEGORIA_ID}}" }, "description": "Busca uma categoria pelo ID."},
                 {
-                    "name": "Listar Categorias",
-                    "request": { "method": "GET", "url": "{{BASE_URL}}/categorias" }
-                }
+                    "name": "PUT Atualizar Categoria",
+                    "request": {
+                        "method": "PUT",
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {"mode": "raw", "raw": "{\n    \"name\": \"Eletrônicos e Gadgets\"\n}", "options": {"raw": {"language": "json"}}},
+                        "url": "{{BASE_URL}}/categorias/{{CATEGORIA_ID}}"
+                    },
+                    "description": "Atualiza uma categoria existente."
+                },
+                {"name": "DELETE Deletar Categoria", "request": { "method": "DELETE", "url": "{{BASE_URL}}/categorias/{{CATEGORIA_ID}}" }, "description": "Deleta uma categoria pelo ID."}
             ]
         },
         {
-            "name": "5. Produtos",
+            "name": "Produtos",
+            "description": "Endpoints para gerenciar os produtos.",
             "item": [
                 {
-                    "name": "Criar Produto",
-                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"PRODUTO_ID\", res._id);"], "type": "text/javascript"}}],
+                    "name": "POST Criar Produto",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"PRODUTO_ID\", res.data._id);"], "type": "text/javascript"}}],
                     "request": {
                         "method": "POST",
-                        "header": [{ "key": "Content-Type", "value": "application/json" }],
-                        "body": {"mode": "raw", "raw": "{\n  \"name\": \"Smartphone XYZ\",\n  \"price\": 2500,\n  \"description\": \"Um otimo smartphone\",\n  \"category\": \"{{CATEGORIA_ID}}\"\n}"},
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {"mode": "raw", "raw": "{\n    \"name\": \"Smartphone Pro\",\n    \"description\": \"Um smartphone de última geração.\",\n    \"price\": 3999.99,\n    \"categoria\": \"{{CATEGORIA_ID}}\",\n    \"vendedor\": \"{{VENDEDOR_ID}}\"\n}", "options": {"raw": {"language": "json"}}},
                         "url": "{{BASE_URL}}/produtos"
-                    }
+                    },
+                    "description": "Cria um novo produto."
                 },
+                {"name": "GET Listar Produtos", "request": { "method": "GET", "url": "{{BASE_URL}}/produtos" }, "description": "Lista todos os produtos."},
+                {"name": "GET Produto por ID", "request": { "method": "GET", "url": "{{BASE_URL}}/produtos/{{PRODUTO_ID}}" }, "description": "Busca um produto pelo ID."},
                 {
-                    "name": "Listar Produtos",
-                    "request": { "method": "GET", "url": "{{BASE_URL}}/produtos" }
-                }
+                    "name": "PUT Atualizar Produto",
+                    "request": {
+                        "method": "PUT",
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {"mode": "raw", "raw": "{\n    \"price\": 3799.99\n}", "options": {"raw": {"language": "json"}}},
+                        "url": "{{BASE_URL}}/produtos/{{PRODUTO_ID}}"
+                    },
+                    "description": "Atualiza um produto existente."
+                },
+                {"name": "DELETE Deletar Produto", "request": { "method": "DELETE", "url": "{{BASE_URL}}/produtos/{{PRODUTO_ID}}" }, "description": "Deleta um produto pelo ID."}
             ]
         },
         {
-            "name": "6. Enderecos",
+            "name": "Enderecos",
+            "description": "Endpoints para gerenciar os endereços dos usuários.",
             "item": [
-                 {
-                    "name": "Criar Endereco",
-                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"ENDERECO_ID\", res._id);"], "type": "text/javascript"}}],
+                {
+                    "name": "POST Criar Endereco",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"ENDERECO_ID\", res.data._id);"], "type": "text/javascript"}}],
                     "request": {
                         "method": "POST",
-                        "header": [{ "key": "Content-Type", "value": "application/json" }],
-                        "body": {"mode": "raw", "raw": "{\n  \"user\": \"{{USUARIO_ID}}\",\n  \"street\": \"Rua dos Bobos\",\n  \"number\": \"0\",\n  \"city\": \"Sao Paulo\",\n  \"state\": \"SP\",\n  \"zipCode\": \"01001000\"\n}"},
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {"mode": "raw", "raw": "{\n    \"usuario\": \"{{USUARIO_ID}}\",\n    \"street\": \"Rua Exemplo, 123\",\n    \"city\": \"Cidade Exemplo\",\n    \"state\": \"EX\",\n    \"zipCode\": \"12345-678\"\n}", "options": {"raw": {"language": "json"}}},
                         "url": "{{BASE_URL}}/enderecos"
-                    }
+                    },
+                    "description": "Cria um novo endereço para um usuário."
                 },
+                {"name": "GET Listar Enderecos", "request": { "method": "GET", "url": "{{BASE_URL}}/enderecos" }, "description": "Lista todos os endereços."},
+                {"name": "GET Endereco por ID", "request": { "method": "GET", "url": "{{BASE_URL}}/enderecos/{{ENDERECO_ID}}" }, "description": "Busca um endereço pelo ID."},
                 {
-                    "name": "Listar Enderecos",
-                    "request": { "method": "GET", "url": "{{BASE_URL}}/enderecos" }
-                }
+                    "name": "PUT Atualizar Endereco",
+                    "request": {
+                        "method": "PUT",
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {"mode": "raw", "raw": "{\n    \"street\": \"Rua Exemplo Atualizada, 456\"\n}", "options": {"raw": {"language": "json"}}},
+                        "url": "{{BASE_URL}}/enderecos/{{ENDERECO_ID}}"
+                    },
+                    "description": "Atualiza um endereço existente."
+                },
+                {"name": "DELETE Deletar Endereco", "request": { "method": "DELETE", "url": "{{BASE_URL}}/enderecos/{{ENDERECO_ID}}" }, "description": "Deleta um endereço pelo ID."}
             ]
         },
         {
-            "name": "7. Estoques",
+            "name": "Estoques",
+            "description": "Endpoints para gerenciar o estoque dos produtos.",
             "item": [
                 {
-                    "name": "Adicionar ao Estoque",
-                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"ESTOQUE_ID\", res._id);"], "type": "text/javascript"}}],
+                    "name": "POST Criar Estoque",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"ESTOQUE_ID\", res.data._id);"], "type": "text/javascript"}}],
                     "request": {
                         "method": "POST",
-                        "header": [{ "key": "Content-Type", "value": "application/json" }],
-                        "body": {"mode": "raw", "raw": "{\n  \"product\": \"{{PRODUTO_ID}}\",\n  \"quantity\": 100\n}"},
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {"mode": "raw", "raw": "{\n    \"produto\": \"{{PRODUTO_ID}}\",\n    \"vendedor\": \"{{VENDEDOR_ID}}\",\n    \"quantity\": 100\n}", "options": {"raw": {"language": "json"}}},
                         "url": "{{BASE_URL}}/estoques"
-                    }
+                    },
+                    "description": "Cria um novo registro de estoque."
                 },
+                {"name": "GET Listar Estoques", "request": { "method": "GET", "url": "{{BASE_URL}}/estoques" }, "description": "Lista todos os registros de estoque."},
+                {"name": "GET Estoque por ID", "request": { "method": "GET", "url": "{{BASE_URL}}/estoques/{{ESTOQUE_ID}}" }, "description": "Busca um registro de estoque pelo ID."},
                 {
-                    "name": "Listar Estoques",
-                    "request": { "method": "GET", "url": "{{BASE_URL}}/estoques" }
-                }
+                    "name": "PUT Atualizar Estoque",
+                    "request": {
+                        "method": "PUT",
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {"mode": "raw", "raw": "{\n    \"quantity\": 150\n}", "options": {"raw": {"language": "json"}}},
+                        "url": "{{BASE_URL}}/estoques/{{ESTOQUE_ID}}"
+                    },
+                    "description": "Atualiza um registro de estoque existente."
+                },
+                {"name": "DELETE Deletar Estoque", "request": { "method": "DELETE", "url": "{{BASE_URL}}/estoques/{{ESTOQUE_ID}}" }, "description": "Deleta um registro de estoque pelo ID."}
             ]
         },
         {
-            "name": "8. Pedidos",
+            "name": "Pedidos",
+            "description": "Endpoints para gerenciar os pedidos dos clientes.",
             "item": [
                 {
-                    "name": "Criar Pedido",
-                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"PEDIDO_ID\", res._id);"], "type": "text/javascript"}}],
+                    "name": "POST Criar Pedido",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"PEDIDO_ID\", res.data._id);"], "type": "text/javascript"}}],
                     "request": {
                         "method": "POST",
-                        "header": [{ "key": "Content-Type", "value": "application/json" }],
-                        "body": {"mode": "raw", "raw": "{\n  \"user\": \"{{USUARIO_ID}}\",\n  \"funcionario\": \"{{FUNCIONARIO_ID}}\",\n  \"shippingAddress\": \"{{ENDERECO_ID}}\",\n  \"status\": \"Pendente\"\n}"},
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {"mode": "raw", "raw": "{\n    \"cliente\": \"{{USUARIO_ID}}\",\n    \"funcionario\": \"{{FUNCIONARIO_ID}}\",\n    \"enderecoEntrega\": \"{{ENDERECO_ID}}\",\n    \"status\": \"Pendente\"\n}", "options": {"raw": {"language": "json"}}},
                         "url": "{{BASE_URL}}/pedidos"
-                    }
+                    },
+                    "description": "Cria um novo pedido."
                 },
+                {"name": "GET Listar Pedidos", "request": { "method": "GET", "url": "{{BASE_URL}}/pedidos" }, "description": "Lista todos os pedidos."},
+                {"name": "GET Pedido por ID", "request": { "method": "GET", "url": "{{BASE_URL}}/pedidos/{{PEDIDO_ID}}" }, "description": "Busca um pedido pelo ID."},
                 {
-                    "name": "Listar Pedidos",
-                    "request": { "method": "GET", "url": "{{BASE_URL}}/pedidos" }
-                }
+                    "name": "PUT Atualizar Pedido",
+                    "request": {
+                        "method": "PUT",
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {"mode": "raw", "raw": "{\n    \"status\": \"Enviado\"\n}", "options": {"raw": {"language": "json"}}},
+                        "url": "{{BASE_URL}}/pedidos/{{PEDIDO_ID}}"
+                    },
+                    "description": "Atualiza um pedido existente."
+                },
+                {"name": "DELETE Deletar Pedido", "request": { "method": "DELETE", "url": "{{BASE_URL}}/pedidos/{{PEDIDO_ID}}" }, "description": "Deleta um pedido pelo ID."}
             ]
         },
         {
-            "name": "9. Itens do Pedido",
+            "name": "Itens do Pedido",
+            "description": "Endpoints para gerenciar os itens dentro de um pedido.",
             "item": [
                 {
-                    "name": "Adicionar Item ao Pedido",
-                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"ITEM_PEDIDO_ID\", res._id);"], "type": "text/javascript"}}],
+                    "name": "POST Criar Item de Pedido",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"ITEM_PEDIDO_ID\", res.data._id);"], "type": "text/javascript"}}],
                     "request": {
                         "method": "POST",
-                        "header": [{ "key": "Content-Type", "value": "application/json" }],
-                        "body": {"mode": "raw", "raw": "{\n  \"pedido\": \"{{PEDIDO_ID}}\",\n  \"produto\": \"{{PRODUTO_ID}}\",\n  \"quantidade\": 2\n}"},
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {"mode": "raw", "raw": "{\n    \"pedido\": \"{{PEDIDO_ID}}\",\n    \"produto\": \"{{PRODUTO_ID}}\",\n    \"quantidade\": 2,\n    \"precoUnitario\": 3999.99\n}", "options": {"raw": {"language": "json"}}},
                         "url": "{{BASE_URL}}/itens-pedido"
-                    }
+                    },
+                    "description": "Adiciona um item a um pedido."
                 },
+                {"name": "GET Listar Itens de Pedido", "request": { "method": "GET", "url": "{{BASE_URL}}/itens-pedido" }, "description": "Lista todos os itens de pedido."},
+                {"name": "GET Item de Pedido por ID", "request": { "method": "GET", "url": "{{BASE_URL}}/itens-pedido/{{ITEM_PEDIDO_ID}}" }, "description": "Busca um item de pedido pelo ID."},
                 {
-                    "name": "Listar Itens do Pedido",
-                    "request": { "method": "GET", "url": "{{BASE_URL}}/itens-pedido" }
-                }
+                    "name": "PUT Atualizar Item de Pedido",
+                    "request": {
+                        "method": "PUT",
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {"mode": "raw", "raw": "{\n    \"quantidade\": 3\n}", "options": {"raw": {"language": "json"}}},
+                        "url": "{{BASE_URL}}/itens-pedido/{{ITEM_PEDIDO_ID}}"
+                    },
+                    "description": "Atualiza um item de pedido existente."
+                },
+                {"name": "DELETE Deletar Item de Pedido", "request": { "method": "DELETE", "url": "{{BASE_URL}}/itens-pedido/{{ITEM_PEDIDO_ID}}" }, "description": "Deleta um item de pedido pelo ID."}
             ]
         },
         {
-            "name": "10. Pagamentos",
+            "name": "Pagamentos",
+            "description": "Endpoints para gerenciar os pagamentos dos pedidos.",
             "item": [
                 {
-                    "name": "Criar Pagamento",
-                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"PAGAMENTO_ID\", res._id);"], "type": "text/javascript"}}],
+                    "name": "POST Criar Pagamento",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"PAGAMENTO_ID\", res.data._id);"], "type": "text/javascript"}}],
                     "request": {
                         "method": "POST",
-                        "header": [{ "key": "Content-Type", "value": "application/json" }],
-                        "body": {"mode": "raw", "raw": "{\n  \"pedido\": \"{{PEDIDO_ID}}\",\n  \"valor\": 5000,\n  \"forma\": \"Cartao de Credito\"\n}"},
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {"mode": "raw", "raw": "{\n    \"pedido\": \"{{PEDIDO_ID}}\",\n    \"valor\": 7999.98,\n    \"formaPagamento\": \"Cartão de Crédito\"\n}", "options": {"raw": {"language": "json"}}},
                         "url": "{{BASE_URL}}/pagamentos"
-                    }
+                    },
+                    "description": "Cria um novo pagamento para um pedido."
                 },
+                {"name": "GET Listar Pagamentos", "request": { "method": "GET", "url": "{{BASE_URL}}/pagamentos" }, "description": "Lista todos os pagamentos."},
+                {"name": "GET Pagamento por ID", "request": { "method": "GET", "url": "{{BASE_URL}}/pagamentos/{{PAGAMENTO_ID}}" }, "description": "Busca um pagamento pelo ID."},
                 {
-                    "name": "Listar Pagamentos",
-                    "request": { "method": "GET", "url": "{{BASE_URL}}/pagamentos" }
-                }
+                    "name": "PUT Atualizar Pagamento",
+                    "request": {
+                        "method": "PUT",
+                        "header": [{"key": "Content-Type", "value": "application/json"}],
+                        "body": {"mode": "raw", "raw": "{\n    \"status\": \"Pago\"\n}", "options": {"raw": {"language": "json"}}},
+                        "url": "{{BASE_URL}}/pagamentos/{{PAGAMENTO_ID}}"
+                    },
+                    "description": "Atualiza um pagamento existente."
+                },
+                {"name": "DELETE Deletar Pagamento", "request": { "method": "DELETE", "url": "{{BASE_URL}}/pagamentos/{{PAGAMENTO_ID}}" }, "description": "Deleta um pagamento pelo ID."}
             ]
         }
     ]

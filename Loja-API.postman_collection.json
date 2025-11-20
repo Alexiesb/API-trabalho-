@@ -1,342 +1,225 @@
 {
     "info": {
-      "_postman_id": "5b47b1c1-332a-4fb8-9978-000000000001",
-      "name": "API Loja - CRUD",
-      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+        "_postman_id": "b7e5e34a-3c2b-4d1f-8a0a-9e1b2c3d4e5f",
+        "name": "API Loja Completa",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "variable": [
+            { "key": "BASE_URL", "value": "http://localhost:3000" },
+            { "key": "USUARIO_ID", "value": "" },
+            { "key": "VENDEDOR_ID", "value": "" },
+            { "key": "FUNCIONARIO_ID", "value": "" },
+            { "key": "ENDERECO_ID", "value": "" },
+            { "key": "CATEGORIA_ID", "value": "" },
+            { "key": "PRODUTO_ID", "value": "" },
+            { "key": "ESTOQUE_ID", "value": "" },
+            { "key": "PEDIDO_ID", "value": "" },
+            { "key": "ITEM_PEDIDO_ID", "value": "" },
+            { "key": "PAGAMENTO_ID", "value": "" }
+        ]
     },
     "item": [
-      {
-        "name": "Produtos",
-        "item": [
-          {
-            "name": "Criar Produto (POST)",
-            "request": {
-              "method": "POST",
-              "header": [],
-              "body": {
-                "mode": "raw",
-                "raw": "{\n  \"nome\": \"Notebook Dell\",\n  \"preco\": 3500,\n  \"categoria\": \"CAT_ID\",\n  \"vendedor\": \"VEND_ID\"\n}"
-              },
-              "url": {
-                "raw": "http://localhost:3000/produtos",
-                "host": ["localhost"],
-                "port": "3000",
-                "path": ["produtos"]
-              }
-            }
-          },
-          {
-            "name": "Listar Produtos (GET)",
-            "request": {
-              "method": "GET",
-              "url": "http://localhost:3000/produtos"
-            }
-          },
-          {
-            "name": "Atualizar Produto (PUT)",
-            "request": {
-              "method": "PUT",
-              "body": {
-                "mode": "raw",
-                "raw": "{\n  \"nome\": \"Notebook Dell Inspiron\"\n}"
-              },
-              "url": "http://localhost:3000/produtos/ID"
-            }
-          },
-          {
-            "name": "Excluir Produto (DELETE)",
-            "request": {
-              "method": "DELETE",
-              "url": "http://localhost:3000/produtos/ID"
-            }
-          }
-        ]
-      },
-      {
-        "name": "Categorias",
-        "item": [
-          {
-            "name": "Criar Categoria (POST)",
-            "request": {
-              "method": "POST",
-              "body": { "mode": "raw", "raw": "{\n  \"nome\": \"Eletrônicos\"\n}" },
-              "url": "http://localhost:3000/categorias"
-            }
-          },
-          {
-            "name": "Listar Categorias (GET)",
-            "request": { "method": "GET", "url": "http://localhost:3000/categorias" }
-          },
-          {
-            "name": "Atualizar Categoria (PUT)",
-            "request": {
-              "method": "PUT",
-              "body": { "mode": "raw", "raw": "{\n  \"nome\": \"Informática\"\n}" },
-              "url": "http://localhost:3000/categorias/ID"
-            }
-          },
-          {
-            "name": "Excluir Categoria (DELETE)",
-            "request": { "method": "DELETE", "url": "http://localhost:3000/categorias/ID" }
-          }
-        ]
-      },
-      {
-        "name": "Vendedores",
-        "item": [
-          {
-            "name": "Criar Vendedor (POST)",
-            "request": {
-              "method": "POST",
-              "body": { "mode": "raw", "raw": "{\n  \"nome\": \"Tech Distribuidora\"\n}" },
-              "url": "http://localhost:3000/vendedores"
-            }
-          },
-          {
-            "name": "Listar Vendedores (GET)",
-            "request": { "method": "GET", "url": "http://localhost:3000/vendedores" }
-          },
-          {
-            "name": "Atualizar Vendedor (PUT)",
-            "request": {
-              "method": "PUT",
-              "body": { "mode": "raw", "raw": "{\n  \"nome\": \"TechMax Distribuidora\"\n}" },
-              "url": "http://localhost:3000/vendedores/ID"
-            }
-          },
-          {
-            "name": "Excluir Vendedor (DELETE)",
-            "request": { "method": "DELETE", "url": "http://localhost:3000/vendedores/ID" }
-          }
-        ]
-      },
-      {
-        "name": "Usuarios",
-        "item": [
-          {
-            "name": "Criar Usuario (POST)",
-            "request": {
-              "method": "POST",
-              "body": {
-                "mode": "raw",
-                "raw": "{\n  \"nome\": \"Alexandre Souza\",\n  \"email\": \"alexandre@email.com\"\n}"
-              },
-              "url": "http://localhost:3000/usuarios"
-            }
-          },
-          {
-            "name": "Listar Usuarios (GET)",
-            "request": { "method": "GET", "url": "http://localhost:3000/usuarios" }
-          },
-          {
-            "name": "Atualizar Usuario (PUT)",
-            "request": {
-              "method": "PUT",
-              "body": {
-                "mode": "raw",
-                "raw": "{\n  \"nome\": \"Alexandre S. Mendonça\"\n}"
-              },
-              "url": "http://localhost:3000/usuarios/ID"
-            }
-          },
-          {
-            "name": "Excluir Usuario (DELETE)",
-            "request": { "method": "DELETE", "url": "http://localhost:3000/usuarios/ID" }
-          }
-        ]
-      },
-      {
-        "name": "Funcionários",
-        "item": [
-          {
-            "name": "Criar Funcionário (POST)",
-            "request": {
-              "method": "POST",
-              "body": { "mode": "raw", "raw": "{\n  \"nome\": \"João Lima\"\n}" },
-              "url": "http://localhost:3000/funcionarios"
-            }
-          },
-          {
-            "name": "Listar Funcionários (GET)",
-            "request": { "method": "GET", "url": "http://localhost:3000/funcionarios" }
-          },
-          {
-            "name": "Atualizar Funcionário (PUT)",
-            "request": {
-              "method": "PUT",
-              "body": { "mode": "raw", "raw": "{\n  \"nome\": \"João da Silva\"\n}" },
-              "url": "http://localhost:3000/funcionarios/ID"
-            }
-          },
-          {
-            "name": "Excluir Funcionário (DELETE)",
-            "request": { "method": "DELETE", "url": "http://localhost:3000/funcionarios/ID" }
-          }
-        ]
-      },
-      {
-        "name": "Pedidos",
-        "item": [
-          {
-            "name": "Criar Pedido (POST)",
-            "request": {
-              "method": "POST",
-              "body": {
-                "mode": "raw",
-                "raw": "{\n  \"usuario\": \"USER_ID\",\n  \"funcionario\": \"FUNC_ID\"\n}"
-              },
-              "url": "http://localhost:3000/pedidos"
-            }
-          },
-          {
-            "name": "Listar Pedidos (GET)",
-            "request": { "method": "GET", "url": "http://localhost:3000/pedidos" }
-          },
-          {
-            "name": "Atualizar Pedido (PUT)",
-            "request": {
-              "method": "PUT",
-              "body": {
-                "mode": "raw",
-                "raw": "{\n  \"status\": \"Finalizado\"\n}"
-              },
-              "url": "http://localhost:3000/pedidos/ID"
-            }
-          },
-          {
-            "name": "Excluir Pedido (DELETE)",
-            "request": { "method": "DELETE", "url": "http://localhost:3000/pedidos/ID" }
-          }
-        ]
-      },
-      {
-        "name": "Itens-Pedido",
-        "item": [
-          {
-            "name": "Criar Item (POST)",
-            "request": {
-              "method": "POST",
-              "body": {
-                "mode": "raw",
-                "raw": "{\n  \"pedido\": \"PED_ID\",\n  \"produto\": \"PROD_ID\",\n  \"quantidade\": 2\n}"
-              },
-              "url": "http://localhost:3000/itens-pedido"
-            }
-          },
-          {
-            "name": "Listar Itens (GET)",
-            "request": { "method": "GET", "url": "http://localhost:3000/itens-pedido" }
-          },
-          {
-            "name": "Atualizar Item (PUT)",
-            "request": {
-              "method": "PUT",
-              "body": { "mode": "raw", "raw": "{\n  \"quantidade\": 5\n}" },
-              "url": "http://localhost:3000/itens-pedido/ID"
-            }
-          },
-          {
-            "name": "Excluir Item (DELETE)",
-            "request": { "method": "DELETE", "url": "http://localhost:3000/itens-pedido/ID" }
-          }
-        ]
-      },
-      {
-        "name": "Pagamentos",
-        "item": [
-          {
-            "name": "Criar Pagamento (POST)",
-            "request": {
-              "method": "POST",
-              "body": {
-                "mode": "raw",
-                "raw": "{\n  \"pedido\": \"PED_ID\",\n  \"valor\": 3500,\n  \"forma\": \"Pix\"\n}"
-              },
-              "url": "http://localhost:3000/pagamentos"
-            }
-          },
-          {
-            "name": "Listar Pagamentos (GET)",
-            "request": { "method": "GET", "url": "http://localhost:3000/pagamentos" }
-          },
-          {
-            "name": "Atualizar Pagamento (PUT)",
-            "request": {
-              "method": "PUT",
-              "body": { "mode": "raw", "raw": "{\n  \"forma\": \"Cartão\"\n}" },
-              "url": "http://localhost:3000/pagamentos/ID"
-            }
-          },
-          {
-            "name": "Excluir Pagamento (DELETE)",
-            "request": { "method": "DELETE", "url": "http://localhost:3000/pagamentos/ID" }
-          }
-        ]
-      },
-      {
-        "name": "Endereços",
-        "item": [
-          {
-            "name": "Criar Endereço (POST)",
-            "request": {
-              "method": "POST",
-              "body": {
-                "mode": "raw",
-                "raw": "{\n  \"usuario\": \"USER_ID\",\n  \"rua\": \"Rua 1\",\n  \"numero\": \"55\"\n}"
-              },
-              "url": "http://localhost:3000/enderecos"
-            }
-          },
-          {
-            "name": "Listar Endereços (GET)",
-            "request": { "method": "GET", "url": "http://localhost:3000/enderecos" }
-          },
-          {
-            "name": "Atualizar Endereço (PUT)",
-            "request": {
-              "method": "PUT",
-              "body": { "mode": "raw", "raw": "{\n  \"rua\": \"Rua Brasil\"\n}" },
-              "url": "http://localhost:3000/enderecos/ID"
-            }
-          },
-          {
-            "name": "Excluir Endereço (DELETE)",
-            "request": { "method": "DELETE", "url": "http://localhost:3000/enderecos/ID" }
-          }
-        ]
-      },
-      {
-        "name": "Estoques",
-        "item": [
-          {
-            "name": "Criar Registro (POST)",
-            "request": {
-              "method": "POST",
-              "body": {
-                "mode": "raw",
-                "raw": "{\n  \"produto\": \"PROD_ID\",\n  \"vendedor\": \"VEND_ID\",\n  \"quantidade\": 20\n}"
-              },
-              "url": "http://localhost:3000/estoques"
-            }
-          },
-          {
-            "name": "Listar Estoque (GET)",
-            "request": { "method": "GET", "url": "http://localhost:3000/estoques" }
-          },
-          {
-            "name": "Atualizar Registro (PUT)",
-            "request": {
-              "method": "PUT",
-              "body": { "mode": "raw", "raw": "{\n  \"quantidade\": 50\n}" },
-              "url": "http://localhost:3000/estoques/ID"
-            }
-          },
-          {
-            "name": "Excluir Registro (DELETE)",
-            "request": { "method": "DELETE", "url": "http://localhost:3000/estoques/ID" }
-          }
-        ]
-      }
+        {
+            "name": "1. Usuarios",
+            "item": [
+                {
+                    "name": "Criar Usuario",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"USUARIO_ID\", res._id);"], "type": "text/javascript"}}],
+                    "request": {
+                        "method": "POST",
+                        "header": [{ "key": "Content-Type", "value": "application/json" }],
+                        "body": {"mode": "raw", "raw": "{\n  \"name\": \"Usuario de Teste\",\n  \"email\": \"usuario@teste.com\",\n  \"password\": \"senha123\",\n  \"cpf\": \"11122233344\"\n}"},
+                        "url": "{{BASE_URL}}/usuarios"
+                    }
+                },
+                {
+                    "name": "Listar Usuarios",
+                    "request": { "method": "GET", "url": "{{BASE_URL}}/usuarios" }
+                },
+                {
+                    "name": "Atualizar Usuario",
+                    "request": {
+                        "method": "PUT",
+                        "header": [{ "key": "Content-Type", "value": "application/json" }],
+                        "body": { "mode": "raw", "raw": "{\n  \"name\": \"Usuario de Teste Alterado\"\n}"},
+                        "url": "{{BASE_URL}}/usuarios/{{USUARIO_ID}}"
+                    }
+                },
+                {
+                    "name": "Deletar Usuario",
+                    "request": { "method": "DELETE", "url": "{{BASE_URL}}/usuarios/{{USUARIO_ID}}" }
+                }
+            ]
+        },
+        {
+            "name": "2. Vendedores",
+            "item": [
+                 {
+                    "name": "Criar Vendedor",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"VENDEDOR_ID\", res._id);"], "type": "text/javascript"}}],
+                    "request": {
+                        "method": "POST",
+                        "header": [{ "key": "Content-Type", "value": "application/json" }],
+                        "body": {"mode": "raw", "raw": "{\n  \"name\": \"Loja do Vendedor\",\n  \"email\": \"vendedor@loja.com\",\n  \"password\": \"senhaForte123\",\n  \"cnpj\": \"11222333000144\"\n}"},
+                        "url": "{{BASE_URL}}/vendedores"
+                    }
+                },
+                {
+                    "name": "Listar Vendedores",
+                    "request": { "method": "GET", "url": "{{BASE_URL}}/vendedores" }
+                }
+            ]
+        },
+        {
+            "name": "3. Funcionarios",
+            "item": [
+                 {
+                    "name": "Criar Funcionario",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"FUNCIONARIO_ID\", res._id);"], "type": "text/javascript"}}],
+                    "request": {
+                        "method": "POST",
+                        "header": [{ "key": "Content-Type", "value": "application/json" }],
+                        "body": {"mode": "raw", "raw": "{\n  \"name\": \"Funcionario Exemplo\",\n  \"email\": \"func@empresa.com\",\n  \"password\": \"senhaFunc\"\n}"},
+                        "url": "{{BASE_URL}}/funcionarios"
+                    }
+                },
+                {
+                    "name": "Listar Funcionarios",
+                    "request": { "method": "GET", "url": "{{BASE_URL}}/funcionarios" }
+                }
+            ]
+        },
+        {
+            "name": "4. Categorias",
+            "item": [
+                 {
+                    "name": "Criar Categoria",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"CATEGORIA_ID\", res._id);"], "type": "text/javascript"}}],
+                    "request": {
+                        "method": "POST",
+                        "header": [{ "key": "Content-Type", "value": "application/json" }],
+                        "body": { "mode": "raw", "raw": "{\n  \"name\": \"Eletronicos\"\n}"},
+                        "url": "{{BASE_URL}}/categorias"
+                    }
+                },
+                {
+                    "name": "Listar Categorias",
+                    "request": { "method": "GET", "url": "{{BASE_URL}}/categorias" }
+                }
+            ]
+        },
+        {
+            "name": "5. Produtos",
+            "item": [
+                {
+                    "name": "Criar Produto",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"PRODUTO_ID\", res._id);"], "type": "text/javascript"}}],
+                    "request": {
+                        "method": "POST",
+                        "header": [{ "key": "Content-Type", "value": "application/json" }],
+                        "body": {"mode": "raw", "raw": "{\n  \"name\": \"Smartphone XYZ\",\n  \"price\": 2500,\n  \"description\": \"Um otimo smartphone\",\n  \"category\": \"{{CATEGORIA_ID}}\"\n}"},
+                        "url": "{{BASE_URL}}/produtos"
+                    }
+                },
+                {
+                    "name": "Listar Produtos",
+                    "request": { "method": "GET", "url": "{{BASE_URL}}/produtos" }
+                }
+            ]
+        },
+        {
+            "name": "6. Enderecos",
+            "item": [
+                 {
+                    "name": "Criar Endereco",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"ENDERECO_ID\", res._id);"], "type": "text/javascript"}}],
+                    "request": {
+                        "method": "POST",
+                        "header": [{ "key": "Content-Type", "value": "application/json" }],
+                        "body": {"mode": "raw", "raw": "{\n  \"user\": \"{{USUARIO_ID}}\",\n  \"street\": \"Rua dos Bobos\",\n  \"number\": \"0\",\n  \"city\": \"Sao Paulo\",\n  \"state\": \"SP\",\n  \"zipCode\": \"01001000\"\n}"},
+                        "url": "{{BASE_URL}}/enderecos"
+                    }
+                },
+                {
+                    "name": "Listar Enderecos",
+                    "request": { "method": "GET", "url": "{{BASE_URL}}/enderecos" }
+                }
+            ]
+        },
+        {
+            "name": "7. Estoques",
+            "item": [
+                {
+                    "name": "Adicionar ao Estoque",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"ESTOQUE_ID\", res._id);"], "type": "text/javascript"}}],
+                    "request": {
+                        "method": "POST",
+                        "header": [{ "key": "Content-Type", "value": "application/json" }],
+                        "body": {"mode": "raw", "raw": "{\n  \"product\": \"{{PRODUTO_ID}}\",\n  \"quantity\": 100\n}"},
+                        "url": "{{BASE_URL}}/estoques"
+                    }
+                },
+                {
+                    "name": "Listar Estoques",
+                    "request": { "method": "GET", "url": "{{BASE_URL}}/estoques" }
+                }
+            ]
+        },
+        {
+            "name": "8. Pedidos",
+            "item": [
+                {
+                    "name": "Criar Pedido",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"PEDIDO_ID\", res._id);"], "type": "text/javascript"}}],
+                    "request": {
+                        "method": "POST",
+                        "header": [{ "key": "Content-Type", "value": "application/json" }],
+                        "body": {"mode": "raw", "raw": "{\n  \"user\": \"{{USUARIO_ID}}\",\n  \"funcionario\": \"{{FUNCIONARIO_ID}}\",\n  \"shippingAddress\": \"{{ENDERECO_ID}}\",\n  \"status\": \"Pendente\"\n}"},
+                        "url": "{{BASE_URL}}/pedidos"
+                    }
+                },
+                {
+                    "name": "Listar Pedidos",
+                    "request": { "method": "GET", "url": "{{BASE_URL}}/pedidos" }
+                }
+            ]
+        },
+        {
+            "name": "9. Itens do Pedido",
+            "item": [
+                {
+                    "name": "Adicionar Item ao Pedido",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"ITEM_PEDIDO_ID\", res._id);"], "type": "text/javascript"}}],
+                    "request": {
+                        "method": "POST",
+                        "header": [{ "key": "Content-Type", "value": "application/json" }],
+                        "body": {"mode": "raw", "raw": "{\n  \"pedido\": \"{{PEDIDO_ID}}\",\n  \"produto\": \"{{PRODUTO_ID}}\",\n  \"quantidade\": 2\n}"},
+                        "url": "{{BASE_URL}}/itens-pedido"
+                    }
+                },
+                {
+                    "name": "Listar Itens do Pedido",
+                    "request": { "method": "GET", "url": "{{BASE_URL}}/itens-pedido" }
+                }
+            ]
+        },
+        {
+            "name": "10. Pagamentos",
+            "item": [
+                {
+                    "name": "Criar Pagamento",
+                    "event": [{"listen": "test", "script": {"exec": ["pm.test(\"Status code is 201\");","const res = pm.response.json();","pm.collectionVariables.set(\"PAGAMENTO_ID\", res._id);"], "type": "text/javascript"}}],
+                    "request": {
+                        "method": "POST",
+                        "header": [{ "key": "Content-Type", "value": "application/json" }],
+                        "body": {"mode": "raw", "raw": "{\n  \"pedido\": \"{{PEDIDO_ID}}\",\n  \"valor\": 5000,\n  \"forma\": \"Cartao de Credito\"\n}"},
+                        "url": "{{BASE_URL}}/pagamentos"
+                    }
+                },
+                {
+                    "name": "Listar Pagamentos",
+                    "request": { "method": "GET", "url": "{{BASE_URL}}/pagamentos" }
+                }
+            ]
+        }
     ]
-  }
-  
+}

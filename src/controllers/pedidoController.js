@@ -35,23 +35,12 @@ exports.create = async (req, res) => {
 
 exports.update = async (req, res) => {
     try {
-        const existente = await Pedido.findById(req.params.id);
-        if (!existente) {
+        await pedidoSchema.validate(req.body, { abortEarly: false });
+        const pedido = await Pedido.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        if (!pedido) {
             return res.status(404).json({ message: 'Pedido não encontrado' });
         }
-
-        const dados = { ...existente.toObject(), ...req.body };
-
-        await pedidoSchema.validate(dados, { abortEarly: false });
-
-        const pedido = await Pedido.findByIdAndUpdate(
-            req.params.id,
-            dados,
-            { new: true, runValidators: true }
-        );
-
         res.json(pedido);
-
     } catch (error) {
         res.status(400).json({ message: error.message });
     }

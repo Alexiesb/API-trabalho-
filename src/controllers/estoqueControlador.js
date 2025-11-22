@@ -12,7 +12,7 @@ exports.createEstoque = async (req, res) => {
 
 exports.getAllEstoques = async (req, res) => {
   try {
-    const estoques = await Estoque.find().populate('produto');
+    const estoques = await Estoque.find().populate('product');
     res.json(estoques);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -21,7 +21,7 @@ exports.getAllEstoques = async (req, res) => {
 
 exports.getEstoqueById = async (req, res) => {
   try {
-    const estoque = await Estoque.findById(req.params.id).populate('produto');
+    const estoque = await Estoque.findById(req.params.id).populate('product');
     if (!estoque) {
       return res.status(404).json({ message: 'Estoque não encontrado' });
     }
